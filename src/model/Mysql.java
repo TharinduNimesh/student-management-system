@@ -12,7 +12,7 @@ public class Mysql {
     }
 
     public static boolean checkConnection() {
-        if (connection.equals("")) {
+        if (connection == null) {
             return false;
         }
         return true;
