@@ -3,6 +3,7 @@ package model;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class User extends Mysql {
 
@@ -11,14 +12,15 @@ public class User extends Mysql {
     private String nic;
     private String mobile;
     private String gender;
-    private String address;
     private String email;
     private String password;
     private String role;
+    private String created_at;
+    private String secure_key;
 
     public User(int id) throws Exception {
-        ResultSet result = this.get(id);
-        if(result.next()) {
+        ResultSet result = this.get("id", String.valueOf(id));
+        if (result.next()) {
             this.setUser(result);
         }
     }
@@ -59,14 +61,6 @@ public class User extends Mysql {
         this.gender = gender;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -79,23 +73,36 @@ public class User extends Mysql {
         this.password = password;
     }
 
-    public boolean save() {
-        if (this.id == 0) {
-            String query = "INSERT INTO users(`name`, `nic`, `mobile`, `address`, `email`, `password`, `gender_id`, `role_id`)"
-                    + "VALUE('" + this.name + "', "
-                    + "'" + this.nic + "', "
-                    + "'" + this.mobile + "', "
-                    + "'" + this.address + "', "
-                    + "'" + this.email + "', "
-                    + "'" + this.password + "', "
-                    + "'" + this.gender + "', "
-                    + "'2')";
-            try {
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+
+    public void setSecure_key(String secure_key) {
+        this.secure_key = secure_key;
+    }
+
+    public boolean save() throws Exception {
+        ResultSet result = this.get("email", this.email);
+        if (!result.next()) {
+            String validate = "SELECT * FROM secret_key WHERE `key` = '" + this.secure_key + "'";
+            ResultSet keys = search(validate);
+
+            if (keys.next()) {
+                String query = "INSERT INTO users(`name`, `nic`, `mobile`, `email`, `password`, `gender_id`, `created_at`, `role_id`)"
+                        + "VALUE('" + this.name + "', "
+                        + "'" + this.nic + "', "
+                        + "'" + this.mobile + "', "
+                        + "'" + this.email + "', "
+                        + "'" + this.password + "', "
+                        + "'" + this.gender + "', "
+                        + "'" + Common.getCurrentDate() + "', "
+                        + "'2')";
                 insert(query);
                 return true;
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                return false;
             }
         }
         return false;
@@ -116,10 +123,11 @@ public class User extends Mysql {
         return false;
     }
 
-    private ResultSet get(int id) {
-        String query = "SELECT u.*, g.type AS gender, r.type AS role FROM users u WHERE id = '" + id + "' "
+    private ResultSet get(String property, String value) {
+        String query = "SELECT u.*, g.type AS gender, r.type AS role FROM users u "
                 + "INNER JOIN genders g ON g.id = u.gender_id "
-                + "INNER JOIN roles r ON r.id = u.role_id";
+                + "INNER JOIN roles r ON r.id = u.role_id "
+                + "WHERE " + property + " = '" + value + "' ";
         try {
             return search(query);
         } catch (Exception e) {
@@ -138,10 +146,10 @@ public class User extends Mysql {
             this.nic = result.getString("nic");
             this.mobile = result.getString("mobile");
             this.gender = result.getString("gender");
-            this.address = result.getString("address");
             this.email = result.getString("email");
             this.password = result.getString("password");
             this.role = result.getString("role");
+            this.created_at = result.getString("created_at");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

@@ -4,7 +4,6 @@
  */
 package gui;
 
-import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatDarkFlatIJTheme;
 import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
@@ -55,7 +54,6 @@ public class Register extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jRadioButton2 = new javax.swing.JRadioButton();
-        tfAddress = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         tfEmail = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -63,6 +61,7 @@ public class Register extends javax.swing.JFrame {
         tfPassword = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        tfKey = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -139,13 +138,9 @@ public class Register extends javax.swing.JFrame {
         jRadioButton2.setText("Female");
         jRadioButton2.setActionCommand("2");
 
-        tfAddress.setBackground(new java.awt.Color(255, 255, 255));
-        tfAddress.setForeground(new java.awt.Color(0, 0, 0));
-        tfAddress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Public Address");
+        jLabel9.setText("Security Key");
 
         tfEmail.setBackground(new java.awt.Color(255, 255, 255));
         tfEmail.setForeground(new java.awt.Color(0, 0, 0));
@@ -185,6 +180,10 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        tfKey.setBackground(new java.awt.Color(255, 255, 255));
+        tfKey.setForeground(new java.awt.Color(0, 0, 0));
+        tfKey.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -213,22 +212,22 @@ public class Register extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
-                                    .addComponent(tfPassword)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfPassword)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel8)
-                                .addGap(159, 159, 159))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jRadioButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2)
-                                .addGap(51, 51, 51)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(14, 14, 14)
+                                        .addComponent(jLabel8)
+                                        .addGap(159, 159, 159))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jRadioButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton2)
+                                        .addGap(51, 51, 51)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(tfKey)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,11 +266,9 @@ public class Register extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jRadioButton2)
+                            .addComponent(tfKey, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
@@ -284,10 +281,10 @@ public class Register extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 700, 490));
@@ -321,14 +318,14 @@ public class Register extends javax.swing.JFrame {
         String nic = tfNIC.getText();
         String mobile = tfMobile.getText();
         ButtonModel genderModal = buttonGroup1.getSelection();
-        String address = tfAddress.getText();
+        String key = String.valueOf(tfKey.getPassword());
         String email = tfEmail.getText();
         String password = String.valueOf(tfPassword.getPassword());
         String gender = null;
 
         boolean isValid = true;
 
-        if (name.isBlank() || nic.isBlank() || mobile.isBlank() || address.isBlank() || email.isBlank() || password.isBlank()) {
+        if (name.isBlank() || nic.isBlank() || mobile.isBlank() || key.isBlank() || email.isBlank() || password.isBlank()) {
             JOptionPane.showMessageDialog(this,
                     "Please Fill All TextFields",
                     "ERROR",
@@ -352,21 +349,24 @@ public class Register extends javax.swing.JFrame {
             user.setNic(nic);
             user.setMobile(mobile);
             user.setGender(gender);
-            user.setAddress(address);
             user.setEmail(email);
             user.setPassword(password);
+            user.setSecure_key(key);
 
-            if (user.save()) {
-                Login login = new Login();
-                login.setVisible(true);
-                this.dispose();
+            try {
+                if (user.save()) {
+                    Login login = new Login();
+                    login.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "User Already Exist Or Invalid Security Key", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         FlatDarkFlatIJTheme.setup();
@@ -399,8 +399,8 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField tfAddress;
     private javax.swing.JTextField tfEmail;
+    private javax.swing.JPasswordField tfKey;
     private javax.swing.JTextField tfMobile;
     private javax.swing.JTextField tfNIC;
     private javax.swing.JTextField tfName;

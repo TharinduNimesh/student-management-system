@@ -218,8 +218,9 @@ public class Login extends javax.swing.JFrame {
                 
                 tfEmail.grabFocus();
             } else {
-                JOptionPane.showMessageDialog(this, "Login Success", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-
+                Students student = new Students();
+                this.dispose();
+                student.setVisible(true);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
