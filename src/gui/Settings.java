@@ -97,6 +97,7 @@ public class Settings extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel6.setBackground(new java.awt.Color(34, 17, 17));
         jPanel6.setMaximumSize(new java.awt.Dimension(32767, 100));
@@ -318,10 +319,10 @@ public class Settings extends javax.swing.JFrame {
         jPanel5.add(jButton4);
 
         jButton5.setBackground(new java.awt.Color(249, 69, 89));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/admin_black.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/class_black.png"))); // NOI18N
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setPreferredSize(new java.awt.Dimension(83, 83));
-        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/admin_white.png"))); // NOI18N
+        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/class_white.png"))); // NOI18N
         jPanel5.add(jButton5);
 
         jButton6.setBackground(new java.awt.Color(249, 69, 89));

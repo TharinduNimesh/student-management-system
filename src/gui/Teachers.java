@@ -4,6 +4,10 @@
  */
 package gui;
 
+import model.Teacher;
+import java.sql.*;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author tharindu
@@ -15,6 +19,28 @@ public class Teachers extends javax.swing.JFrame {
      */
     public Teachers() {
         initComponents();
+        this.loadTeachers("name", "");
+    }
+    
+    private void loadTeachers(String column, String value) {
+        try {
+            ResultSet teachers = Teacher.like(column, value);
+            
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            
+            while (teachers.next()) {
+                Vector<String> row = new Vector<>();
+                row.add(teachers.getString("id"));
+                row.add(teachers.getString("name"));
+                row.add(teachers.getString("address"));
+                row.add(teachers.getString("mobile"));
+                
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -56,6 +82,7 @@ public class Teachers extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel5.setBackground(new java.awt.Color(34, 17, 17));
         jPanel5.setMinimumSize(new java.awt.Dimension(200, 100));
@@ -88,10 +115,10 @@ public class Teachers extends javax.swing.JFrame {
         jPanel5.add(jButton4);
 
         jButton5.setBackground(new java.awt.Color(249, 69, 89));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/admin_black.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/class_black.png"))); // NOI18N
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setPreferredSize(new java.awt.Dimension(83, 83));
-        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/admin_white.png"))); // NOI18N
+        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/class_white.png"))); // NOI18N
         jPanel5.add(jButton5);
 
         jButton6.setBackground(new java.awt.Color(249, 69, 89));
@@ -228,6 +255,11 @@ public class Teachers extends javax.swing.JFrame {
         jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(249, 69, 89), 1, true));
         jButton7.setContentAreaFilled(false);
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
@@ -303,6 +335,11 @@ public class Teachers extends javax.swing.JFrame {
         jButton9.setText("Reload");
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setOpaque(true);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setFont(new java.awt.Font("Fira Sans", 0, 18)); // NOI18N
         jTextField1.setToolTipText("");
@@ -401,7 +438,7 @@ public class Teachers extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.loadTeachers("name", jTextField1.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -420,6 +457,16 @@ public class Teachers extends javax.swing.JFrame {
         settings.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        jTextField1.setText("");
+        this.loadTeachers("name", "");
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        TeacherMoreInformation information = new TeacherMoreInformation();
+        information.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

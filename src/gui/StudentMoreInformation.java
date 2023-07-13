@@ -294,6 +294,11 @@ public class StudentMoreInformation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (this.student == null) {
+            JOptionPane.showMessageDialog(this, "Please search a student", "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         String name = tbName.getText();
         String date = tbDOB.getText();
         String email = tbEmail.getText();
@@ -323,14 +328,14 @@ public class StudentMoreInformation extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please Fill All Values", "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         this.student.setName(name);
         this.student.setAddress(address);
         this.student.setDate(date);
         this.student.setEmail(email);
         this.student.setMobile(mobile);
         this.student.setGender(String.valueOf(gender));
-        
+
         this.student.save();
     }//GEN-LAST:event_jButton4ActionPerformed
 

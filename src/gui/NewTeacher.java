@@ -21,6 +21,7 @@ public class NewTeacher extends javax.swing.JFrame {
 
     private HashMap<String, Integer> subjectMap = new HashMap<>();
     private Vector<Integer> selectedSubjects = new Vector<>();
+
     /**
      * Creates new form NewTeacher
      */
@@ -299,6 +300,12 @@ public class NewTeacher extends javax.swing.JFrame {
             return;
         }
 
+        Teacher isExist = new Teacher("mobile", mobile);
+        if (isExist.getMobile() != null) {
+            JOptionPane.showMessageDialog(this, "This Teacher Already Exist", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         Teacher teacher = new Teacher();
         teacher.setName(name);
         teacher.setAddress(address);
@@ -308,28 +315,30 @@ public class NewTeacher extends javax.swing.JFrame {
 
         this.Clear();
 
+        new Teacher("mobile", mobile).addSubjects(selectedSubjects);
+
         JOptionPane.showMessageDialog(this, "New Teacher Added", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(cbSubject.getSelectedIndex() == 0) {
+        if (cbSubject.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Please select a subject", "WARNING", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         int id = subjectMap.get(String.valueOf(cbSubject.getSelectedItem()));
-        
-        if(selectedSubjects.contains(id)) {
+
+        if (selectedSubjects.contains(id)) {
             JOptionPane.showMessageDialog(this, "This Subject Already Added", "WARNING", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         selectedSubjects.add(id);
-        
+
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Vector<String> row = new Vector<>();
         row.add(String.valueOf(cbSubject.getSelectedItem()));
-        
+
         model.addRow(row);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -338,15 +347,15 @@ public class NewTeacher extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        if(evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             int row = jTable1.getSelectedRow();
             String subject = String.valueOf(jTable1.getValueAt(row, 0));
-            
+
             int id = subjectMap.get(subject);
-            
+
             Integer remove = id;
             selectedSubjects.remove(remove);
-            
+
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.removeRow(row);
         }
