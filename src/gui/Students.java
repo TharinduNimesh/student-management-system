@@ -111,6 +111,11 @@ public class Students extends javax.swing.JFrame {
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setPreferredSize(new java.awt.Dimension(83, 83));
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/teacher_white.png"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton4);
 
         jButton5.setBackground(new java.awt.Color(249, 69, 89));
@@ -125,6 +130,11 @@ public class Students extends javax.swing.JFrame {
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setPreferredSize(new java.awt.Dimension(83, 83));
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/settings_white.png"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton6);
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.LINE_START);
@@ -437,6 +447,18 @@ public class Students extends javax.swing.JFrame {
         StudentMoreInformation information = new StudentMoreInformation();
         information.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Teachers teacher = new Teachers();
+        teacher.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Settings settings = new Settings();
+        settings.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

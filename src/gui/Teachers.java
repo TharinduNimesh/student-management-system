@@ -35,6 +35,7 @@ public class Teachers extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -69,16 +70,21 @@ public class Teachers extends javax.swing.JFrame {
         jPanel5.add(jButton2);
 
         jButton3.setBackground(new java.awt.Color(249, 69, 89));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/students_white.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/students_black.png"))); // NOI18N
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setPreferredSize(new java.awt.Dimension(83, 83));
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/students_white.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton3);
 
         jButton4.setBackground(new java.awt.Color(249, 69, 89));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/teacher_black.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/teacher_white.png"))); // NOI18N
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setPreferredSize(new java.awt.Dimension(83, 83));
-        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/teacher_white.png"))); // NOI18N
         jPanel5.add(jButton4);
 
         jButton5.setBackground(new java.awt.Color(249, 69, 89));
@@ -93,6 +99,11 @@ public class Teachers extends javax.swing.JFrame {
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setPreferredSize(new java.awt.Dimension(83, 83));
         jButton6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/settings_white.png"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton6);
 
         jPanel6.setBackground(new java.awt.Color(34, 17, 17));
@@ -124,20 +135,30 @@ public class Teachers extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
+        jLabel9.setFont(new java.awt.Font("Fira Mono", 1, 36)); // NOI18N
+        jLabel9.setText("Adyapana Institute");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(1017, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 595, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel9)))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -148,11 +169,11 @@ public class Teachers extends javax.swing.JFrame {
 
             },
             new String [] {
-                "SID", "Name", "Date Of Birth", "Mobile"
+                "TID", "Name", "Address", "Mobile"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -203,7 +224,7 @@ public class Teachers extends javax.swing.JFrame {
 
         jButton7.setBackground(new java.awt.Color(0, 255, 0));
         jButton7.setForeground(new java.awt.Color(249, 69, 89));
-        jButton7.setText("Learn More About A Student");
+        jButton7.setText("Learn More About A Teacher");
         jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(249, 69, 89), 1, true));
         jButton7.setContentAreaFilled(false);
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -268,7 +289,7 @@ public class Teachers extends javax.swing.JFrame {
 
         jButton8.setBackground(new java.awt.Color(249, 69, 89));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Add A New Student");
+        jButton8.setText("Add A New Teacher");
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.setOpaque(true);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +308,7 @@ public class Teachers extends javax.swing.JFrame {
         jTextField1.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Fira Sans Condensed SemiBold", 1, 22)); // NOI18N
-        jLabel2.setText("Student Name :");
+        jLabel2.setText("Teacher Name :");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -376,6 +397,7 @@ public class Teachers extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -383,9 +405,21 @@ public class Teachers extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        NewStudent newStudent = new NewStudent();
-        newStudent.setVisible(true);
+        NewTeacher teacher = new NewTeacher();
+        teacher.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Students student = new Students();
+        student.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Settings settings = new Settings();
+        settings.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,6 +474,7 @@ public class Teachers extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

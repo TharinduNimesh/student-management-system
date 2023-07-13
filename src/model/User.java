@@ -1,9 +1,6 @@
 package model;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class User extends Mysql {
 
@@ -122,13 +119,10 @@ public class User extends Mysql {
         }
         return false;
     }
-
-    private ResultSet get(String property, String value) {
-        String query = "SELECT u.*, g.type AS gender, r.type AS role FROM users u "
-                + "INNER JOIN genders g ON g.id = u.gender_id "
-                + "INNER JOIN roles r ON r.id = u.role_id "
-                + "WHERE " + property + " = '" + value + "' ";
+    
+    public static ResultSet all() {
         try {
+            String query = "SELECT * FROM `users`";
             return search(query);
         } catch (Exception e) {
             e.printStackTrace();
@@ -136,12 +130,35 @@ public class User extends Mysql {
         return null;
     }
 
+    public ResultSet get(String property, String value) {
+        String query = "SELECT u.*, g.type AS gender, r.type AS role FROM users u "
+                + "INNER JOIN genders g ON g.id = u.gender_id "
+                + "INNER JOIN roles r ON r.id = u.role_id "
+                + "WHERE u." + property + " = '" + value + "' ";
+        try {
+            return search(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public void remove() {
+        try {
+            String query = "DELETE FROM `users` WHERE `id` = '"+ this.id +"'";
+            delete(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     private boolean isAdmin() {
         return this.role.equals("Admin");
     }
 
     private void setUser(ResultSet result) {
         try {
+            this.id = result.getInt("id");
             this.name = result.getString("name");
             this.nic = result.getString("nic");
             this.mobile = result.getString("mobile");

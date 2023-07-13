@@ -320,7 +320,7 @@ public class StudentMoreInformation extends javax.swing.JFrame {
         }
 
         if (!isValid) {
-            JOptionPane.showMessageDialog(this, "Please search a student", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please Fill All Values", "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
