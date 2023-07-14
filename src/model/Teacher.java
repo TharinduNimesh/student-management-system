@@ -106,6 +106,11 @@ public class Teacher extends Mysql {
         return search(query);
     }
 
+    public static ResultSet all() throws Exception {
+        String query = "SELECT * FROM `teachers`";
+        return search(query);
+    }
+    
     public void addSubjects(Vector subjects) {
         try {
             Vector<Integer> already = new Vector<>();

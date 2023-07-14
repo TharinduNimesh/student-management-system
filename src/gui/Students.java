@@ -123,6 +123,11 @@ public class Students extends javax.swing.JFrame {
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setPreferredSize(new java.awt.Dimension(83, 83));
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/class_white.png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton5);
 
         jButton6.setBackground(new java.awt.Color(249, 69, 89));
@@ -459,6 +464,12 @@ public class Students extends javax.swing.JFrame {
         settings.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Classes classes = new Classes();
+        classes.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

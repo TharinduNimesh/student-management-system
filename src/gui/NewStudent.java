@@ -5,7 +5,6 @@
 package gui;
 
 import java.util.Vector;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.Student;
 

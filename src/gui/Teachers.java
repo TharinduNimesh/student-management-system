@@ -8,6 +8,7 @@ import model.Teacher;
 import java.sql.*;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author tharindu
@@ -21,21 +22,21 @@ public class Teachers extends javax.swing.JFrame {
         initComponents();
         this.loadTeachers("name", "");
     }
-    
+
     private void loadTeachers(String column, String value) {
         try {
             ResultSet teachers = Teacher.like(column, value);
-            
+
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
-            
+
             while (teachers.next()) {
                 Vector<String> row = new Vector<>();
                 row.add(teachers.getString("id"));
                 row.add(teachers.getString("name"));
                 row.add(teachers.getString("address"));
                 row.add(teachers.getString("mobile"));
-                
+
                 model.addRow(row);
             }
         } catch (Exception e) {
@@ -119,6 +120,11 @@ public class Teachers extends javax.swing.JFrame {
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setPreferredSize(new java.awt.Dimension(83, 83));
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/class_white.png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton5);
 
         jButton6.setBackground(new java.awt.Color(249, 69, 89));
@@ -467,6 +473,12 @@ public class Teachers extends javax.swing.JFrame {
         TeacherMoreInformation information = new TeacherMoreInformation();
         information.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Classes classes = new Classes();
+        classes.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
