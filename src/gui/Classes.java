@@ -47,6 +47,7 @@ public class Classes extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
+        dateChooser1.setForeground(new java.awt.Color(249, 69, 89));
         dateChooser1.setTextRefernce(jTextField1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
