@@ -218,9 +218,9 @@ public class Login extends javax.swing.JFrame {
                 
                 tfEmail.grabFocus();
             } else {
-                Students student = new Students();
+                Home home = new Home();
                 this.dispose();
-                student.setVisible(true);
+                home.setVisible(true);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

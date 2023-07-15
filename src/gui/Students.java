@@ -28,6 +28,10 @@ public class Students extends javax.swing.JFrame {
          try {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
+            
+            int male = 0;
+            int female = 0;
+            
             while (result.next()) {
                 Vector<String> row = new Vector<>();
                 
@@ -36,8 +40,19 @@ public class Students extends javax.swing.JFrame {
                 row.add(result.getString("date_of_birth"));
                 row.add(result.getString("mobile"));
                 
+                if(result.getInt("gender_id") == 1) {
+                    male++;
+                } else {
+                    female++;
+                }
+                
                 model.addRow(row);
             }
+            jLabel7.setText(String.valueOf(male + female));
+            jLabel8.setText(String.valueOf(male));
+            jLabel3.setText(String.valueOf(female));
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,6 +113,11 @@ public class Students extends javax.swing.JFrame {
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setPreferredSize(new java.awt.Dimension(83, 83));
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/home_white.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton2);
 
         jButton3.setBackground(new java.awt.Color(249, 69, 89));
@@ -277,7 +297,7 @@ public class Students extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Grade 12 Students");
+        jLabel4.setText("Male");
 
         jLabel8.setFont(new java.awt.Font("Fira Sans", 1, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -307,7 +327,7 @@ public class Students extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Fira Sans", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Grade 13 Students");
+        jLabel5.setText("Female");
         jLabel5.setToolTipText("");
 
         jLabel3.setFont(new java.awt.Font("Fira Sans", 1, 20)); // NOI18N
@@ -470,6 +490,12 @@ public class Students extends javax.swing.JFrame {
         classes.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Home home = new Home();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

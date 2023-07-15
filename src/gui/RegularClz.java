@@ -67,6 +67,16 @@ public class RegularClz extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    public void Clear() {
+        cbSubject.setSelectedIndex(0);
+        cbTeachers.setSelectedIndex(0);
+        cbDate.setSelectedIndex(0);
+        tbStartTime.setText("");
+        tbEndTime.setText("");
+        
+        cbSubject.grabFocus();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -258,7 +268,7 @@ public class RegularClz extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        this.Clear();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -1,5 +1,8 @@
 package model;
 
+import java.sql.ResultSet;
+import static model.Mysql.search;
+
 public class SpecialClass extends Mysql {
 
     private int id = 0;
@@ -58,5 +61,10 @@ public class SpecialClass extends Mysql {
             String query = "INSERT INTO `special_classes`(`teacher_id`, `subject_id`, `date`, `start_time`, `end_time`) VALUES('" + this.teacher + "', '" + this.subject + "', '" + this.date + "', '" + this.startTime + "', '" + this.endTime + "')";
             insert(query);
         }
+    }
+
+    public static ResultSet all() throws Exception {
+        String query = "SELECT c.*, t.name AS `teacher`, s.name AS `subject` FROM `special_classes` c INNER JOIN subjects s ON s.id = c.subject_id INNER JOIN teachers t ON t.id = c.teacher_id";
+        return search(query);
     }
 }

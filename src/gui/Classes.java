@@ -4,6 +4,13 @@
  */
 package gui;
 
+import model.RegularClass;
+import java.sql.*;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.SpecialClass;
+
 /**
  *
  * @author tharindu
@@ -15,6 +22,43 @@ public class Classes extends javax.swing.JFrame {
      */
     public Classes() {
         initComponents();
+        this.loadClasses();
+    }
+
+    public void loadClasses() {
+        try {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+            ResultSet special = SpecialClass.all();
+            while (special.next()) {
+                Vector<String> row = new Vector<>();
+                row.add(special.getString("id"));
+                row.add(special.getString("subject"));
+                row.add(special.getString("teacher"));
+                row.add(special.getString("date"));
+                row.add(special.getString("start_time"));
+                row.add(special.getString("end_time"));
+                row.add("20");
+
+                model.addRow(row);
+            }
+
+            ResultSet regular = RegularClass.all();
+            while (regular.next()) {
+                Vector<String> row = new Vector<>();
+                row.add(regular.getString("id"));
+                row.add(regular.getString("subject"));
+                row.add(regular.getString("teacher"));
+                row.add(regular.getString("date"));
+                row.add(regular.getString("start_time"));
+                row.add(regular.getString("end_time"));
+                row.add("20");
+
+                model.addRow(row);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -58,6 +102,11 @@ public class Classes extends javax.swing.JFrame {
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setPreferredSize(new java.awt.Dimension(83, 83));
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/home_white.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton2);
 
         jButton3.setBackground(new java.awt.Color(249, 69, 89));
@@ -166,15 +215,20 @@ public class Classes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Subject", "Teacher", "Date", "Start Time", "End Time", "Students"
+                "ID", "Subject", "Teacher", "Date", "Start Time", "End Time", "Students"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -342,6 +396,36 @@ public class Classes extends javax.swing.JFrame {
         student.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if (evt.getClickCount() == 2) {
+            Vector<String> days = new Vector<>();
+            days.add("Sunday");
+            days.add("Monday");
+            days.add("Tuesday");
+            days.add("Wednesday");
+            days.add("Thursday");
+            days.add("Friday");
+            days.add("Saturday");
+
+            StudentToClass students = new StudentToClass();
+            int row = jTable1.getSelectedRow();
+
+            if (!days.contains(String.valueOf(jTable1.getValueAt(row, 3)))) {
+                JOptionPane.showMessageDialog(this, "Invalid Operation On Special Class", "WARNING", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            students.setClassId(String.valueOf(jTable1.getValueAt(row, 0)));
+            students.setVisible(true);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Home home = new Home();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

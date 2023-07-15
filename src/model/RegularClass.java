@@ -1,6 +1,6 @@
 package model;
 
-import static model.Mysql.insert;
+import java.sql.*;
 
 public class RegularClass extends Mysql {
 
@@ -60,5 +60,24 @@ public class RegularClass extends Mysql {
             String query = "INSERT INTO `regular_classes`(`teacher_id`, `subject_id`, `date_id`, `start_time`, `end_time`) VALUES('" + this.teacher + "', '" + this.subject + "', '" + this.date + "', '" + this.startTime + "', '" + this.endTime + "')";
             insert(query);
         }
+    }
+    
+    public void remove(String classId) {
+        try {
+            String query = "DELETE FROM `regular_classes` WHERE `id` = "+ classId +"";
+            delete(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ResultSet all() throws Exception {
+        String query = "SELECT c.*, t.name AS `teacher`, s.name AS `subject`, d.name AS `date` FROM `regular_classes` c INNER JOIN subjects s ON s.id = c.subject_id INNER JOIN teachers t ON t.id = c.teacher_id INNER JOIN dates d ON d.id = c.date_id";
+        return search(query);
+    }
+    
+    public static ResultSet getStudents(String id) throws Exception {
+        String query = "SELECT s.*, c.has_paid FROM `student_has_classes` c INNER JOIN `students` s ON s.id = c.student_id WHERE `regular_class_id` = '"+ id +"' ";
+        return search(query);
     }
 }
