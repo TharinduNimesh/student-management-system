@@ -102,7 +102,7 @@ public class Teacher extends Mysql {
     }
 
     public ResultSet getSubjects() throws Exception {
-        String query = "SELECT * FROM `subjects_has_teachers` WHERE `teacher_id` = '" + this.id + "'";
+        String query = "SELECT * FROM `teacher_has_subjects` WHERE `teacher_id` = '" + this.id + "'";
         return search(query);
     }
 
@@ -121,7 +121,7 @@ public class Teacher extends Mysql {
             }
             for (var subject : subjects) {
                 if (!already.contains(subject)) {
-                    String query = "INSERT INTO `subjects_has_teachers`(`subject_id`, `teacher_id`) VALUES('" + subject + "', '" + this.id + "')";
+                    String query = "INSERT INTO `teacher_has_subjects`(`subject_id`, `teacher_id`) VALUES('" + subject + "', '" + this.id + "')";
                     insert(query);
                 }
             }
@@ -132,7 +132,7 @@ public class Teacher extends Mysql {
     
     public void removeSubject(int SubjectID) {
         try {
-            String query = "DELETE FROM `subjects_has_teachers` WHERE teacher_id = "+ this.id +" AND subject_id = "+ SubjectID +"";
+            String query = "DELETE FROM `teacher_has_subjects` WHERE teacher_id = "+ this.id +" AND subject_id = "+ SubjectID +"";
             delete(query);
         } catch (Exception e) {
             e.printStackTrace();
